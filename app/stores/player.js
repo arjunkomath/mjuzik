@@ -68,6 +68,17 @@ class PlayerStore {
         });
     }
 
+    stop() {
+        let self = this;
+        clearInterval(self.interval);
+        self.interval = null;
+        self.title = '';
+        self.player.destroy();
+        self.playerState = MediaStates.DESTROYED;
+        self.isPlaying = false;
+        self.player = null;
+    }
+
     logPlayback(trackId) {
         axios({
             method: 'post',

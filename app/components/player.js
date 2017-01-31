@@ -18,6 +18,7 @@ import Spinner from 'react-native-spinkit';
 import moment from 'moment';
 import Slider from 'react-native-slider';
 import colors from '../config/colors';
+import Swipeout from 'react-native-swipeout';
 
 var MediaStates = {
     LOADING: -3,
@@ -30,6 +31,17 @@ var MediaStates = {
     PLAYING: 4,
     PAUSED: 5,
 };
+
+var swipeoutBtns = [
+    {
+        text: 'Stop',
+        backgroundColor: colors.title,
+        color: 'white',
+        onPress: () => {
+            PlayerState.stop();
+        }
+    }
+];
 
 @observer
 export default class player extends Component {
@@ -85,10 +97,12 @@ export default class player extends Component {
             return (
                 <View style={styles.container}>
                     <View style={styles.playback}>
-                        <Text numberOfLines={1} style={[styles.text]}>{title}</Text>
-                        <Text
-                            style={[styles.progress, styles.text]}>{ ( currentTime > 0 ? moment.utc(Math.floor(currentTime)).format('mm:ss') : '00:00' ) + ' / ' + moment.utc(Math.floor(player.duration)).format('mm:ss') }</Text>
-                        {slider}
+                        <Swipeout left={swipeoutBtns} style={styles.swipe}>
+                            <Text numberOfLines={1} style={[styles.text]}>{title}</Text>
+                            <Text
+                                style={[styles.progress, styles.text]}>{ ( currentTime > 0 ? moment.utc(Math.floor(currentTime)).format('mm:ss') : '00:00' ) + ' / ' + moment.utc(Math.floor(player.duration)).format('mm:ss') }</Text>
+                            {slider}
+                        </Swipeout>
                     </View>
                     {button}
                 </View>
@@ -107,13 +121,18 @@ const styles = StyleSheet.create({
         bottom: 0,
         height: 85,
         width: width,
-        padding: 10,
+        padding: 5,
         backgroundColor: colors.player.bg,
         justifyContent: 'center',
         alignItems: 'center'
     },
+    swipe: {
+        flex: 1,
+        backgroundColor: 'transparent'
+    },
     text: {
-        color: colors.player.text
+        color: colors.player.text,
+        paddingLeft: 5
     },
     playback: {
         flex: 1,

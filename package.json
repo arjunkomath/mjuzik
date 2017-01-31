@@ -16,6 +16,7 @@
     "react-native-audio-toolkit": "^1.0.5",
     "react-native-slider": "^0.9.1",
     "react-native-spinkit": "^1.0.2",
+    "react-native-swipeout": "git+https://github.com/dancormier/react-native-swipeout.git",
     "react-navigation": "^1.0.0-beta.1"
   },
   "devDependencies": {
