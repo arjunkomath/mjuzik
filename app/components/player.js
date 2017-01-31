@@ -1,0 +1,158 @@
+/**
+ * Created by arjun on 26/01/17.
+ */
+
+import React, {Component} from 'react';
+import {
+    StyleSheet,
+    View,
+    Image,
+    Text,
+    TouchableOpacity,
+    Dimensions
+} from 'react-native';
+
+import {observer} from 'mobx-react/native';
+import PlayerState from '../stores/player';
+import Spinner from 'react-native-spinkit';
+import moment from 'moment';
+import Slider from 'react-native-slider';
+
+var MediaStates = {
+    LOADING: -3,
+    DESTROYED: -2,
+    ERROR: -1,
+    IDLE: 0,
+    PREPARING: 1,
+    PREPARED: 2,
+    SEEKING: 3,
+    PLAYING: 4,
+    PAUSED: 5,
+};
+
+@observer
+export default class player extends Component {
+
+    render() {
+
+        const {playerState, currentTime, title, player} = PlayerState;
+
+        if (playerState == MediaStates.LOADING || playerState == MediaStates.PREPARING) {
+            return (
+                <View style={styles.container}>
+                    <View style={styles.playback}>
+                        <Text numberOfLines={1} style={styles.text}>{title}</Text>
+                    </View>
+                    <Spinner style={styles.spinner} isVisible={true} size={30} type="Wave" color="#748CAB"/>
+                </View>
+            );
+        }
+
+        if (playerState < 2) {
+            return (<View></View>);
+        } else {
+
+            const button = (playerState == MediaStates.PLAYING) ? (
+                    <TouchableOpacity onPress={() => player.pause()}>
+                        <Image
+                            style={styles.button}
+                            source={require('./../../assets/images/pause.png')}
+                        />
+                    </TouchableOpacity>
+                ) : (
+                    <TouchableOpacity onPress={() => player.play()}>
+                        <Image
+                            style={styles.button}
+                            source={require('./../../assets/images/play.png')}
+                        />
+                    </TouchableOpacity>
+                );
+
+            const slider = (playerState == MediaStates.PLAYING || playerState == MediaStates.PAUSED) ? (
+                    <Slider
+                        style={sliderStyles.container}
+                        trackStyle={sliderStyles.track}
+                        thumbStyle={sliderStyles.thumb}
+                        minimumValue={0}
+                        maximumValue={player.duration}
+                        value={currentTime ? currentTime : 0}
+                        thumbTouchSize={{width: 50, height: 40}}
+                        onSlidingComplete={(value) => player.seek(value)}/>
+                ) : (
+                    <View></View>
+                );
+
+            return (
+                <View style={styles.container}>
+                    <View style={styles.playback}>
+                        <Text numberOfLines={1} style={[styles.text]}>{title}</Text>
+                        <Text
+                            style={[styles.progress, styles.text]}>{ ( currentTime > 0 ? moment.utc(Math.floor(currentTime)).format('mm:ss') : '00:00' ) + ' / ' + moment.utc(Math.floor(player.duration)).format('mm:ss') }</Text>
+                        {slider}
+                    </View>
+                    {button}
+                </View>
+            );
+        }
+    }
+
+}
+var {height, width} = Dimensions.get('window');
+const styles = StyleSheet.create({
+    container: {
+        position: 'absolute',
+        flex: 1,
+        flexDirection: 'row',
+        left: 0,
+        bottom: 0,
+        height: 80,
+        width: width,
+        padding: 10,
+        backgroundColor: '#1D2D44',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    text: {
+        color: '#748CAB'
+    },
+    playback: {
+        flex: 1,
+        flexDirection: 'column',
+        padding: 10
+    },
+    progress: {
+        fontSize: 12
+    },
+    spinner: {
+        marginRight: 10,
+        marginLeft: 10
+    },
+    button: {
+        marginRight: 10,
+        marginLeft: 10,
+        width: 40,
+        height: 40
+    }
+});
+
+var sliderStyles = StyleSheet.create({
+    container: {
+        height: 20,
+    },
+    track: {
+        height: 2,
+        backgroundColor: '#3E5C76',
+    },
+    thumb: {
+        width: 12,
+        height: 12,
+        backgroundColor: '#748CAB',
+        borderRadius: 12 / 2,
+        backgroundColor: '#748CAB',
+        shadowOffset: {width: 0, height: 0},
+        marginTop: 1,
+        shadowRadius: 2,
+        shadowOpacity: 1,
+    }
+});
+
