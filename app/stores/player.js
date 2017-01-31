@@ -2,7 +2,8 @@
  * Created by arjun on 26/01/17.
  */
 import {autorun, observable} from "mobx";
-
+import axios from 'axios';
+import {Platform} from 'react-native';
 import {
     Player
 } from 'react-native-audio-toolkit';
@@ -22,6 +23,7 @@ var MediaStates = {
 
 class PlayerStore {
     @observable playerState = MediaStates.DESTROYED;
+    @observable isPlaying = false;
     @observable title = null;
     @observable player = null;
     @observable currentTime = 0;
@@ -33,7 +35,7 @@ class PlayerStore {
         // Add client ID
         url = url + '?client_id=' + constants.client_ids.sound_cloud;
 
-        if(this.player) {
+        if (this.player) {
             this.player.destroy();
         }
 
@@ -42,25 +44,43 @@ class PlayerStore {
         this.playerState = MediaStates.LOADING;
         this.player = new Player(url, {
             continuesToPlayInBackground: true
-        }).prepare( err => {
+        }).prepare(err => {
             this.playerState = this.player.state;
-            if(err) {
+            if(this.playerState >= 2)
+                this.isPlaying = true;
+            if (err) {
                 console.error(err);
             }
             this.player.play();
-            this.interval = setInterval( () => {
+            this.interval = setInterval(() => {
                 self.playerState = self.player.state;
                 self.currentTime = self.player.currentTime;
-                if(self.playerState == MediaStates.DESTROYED) {
+                if (self.playerState == MediaStates.PREPARED) {
                     clearInterval(self.interval);
                     self.interval = null;
                     self.title = '';
                     self.player.destroy();
                     self.playerState = MediaStates.DESTROYED;
+                    self.isPlaying = false;
                     self.player = null;
                 }
             }, 500);
         });
+    }
+
+    logPlayback(trackId) {
+        axios({
+            method: 'post',
+            url: constants.api_base_url + '/events/plays/' + trackId + '/',
+            headers: {
+                'Accept': 'application/json; version=' + constants.version,
+                'Client': constants.client_ids[Platform.OS]
+            }
+        }).then(res => {
+            // console.info(res);
+        }).catch(error => {
+            console.error(error);
+        })
     }
 
 }

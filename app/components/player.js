@@ -17,6 +17,7 @@ import PlayerState from '../stores/player';
 import Spinner from 'react-native-spinkit';
 import moment from 'moment';
 import Slider from 'react-native-slider';
+import colors from '../config/colors';
 
 var MediaStates = {
     LOADING: -3,
@@ -43,7 +44,7 @@ export default class player extends Component {
                     <View style={styles.playback}>
                         <Text numberOfLines={1} style={styles.text}>{title}</Text>
                     </View>
-                    <Spinner style={styles.spinner} isVisible={true} size={30} type="Wave" color="#748CAB"/>
+                    <Spinner style={styles.spinner} isVisible={true} size={30} type="Wave" color={colors.border}/>
                 </View>
             );
         }
@@ -51,7 +52,6 @@ export default class player extends Component {
         if (playerState < 2) {
             return (<View></View>);
         } else {
-
             const button = (playerState == MediaStates.PLAYING) ? (
                     <TouchableOpacity onPress={() => player.pause()}>
                         <Image
@@ -98,7 +98,6 @@ export default class player extends Component {
 
 }
 var {height, width} = Dimensions.get('window');
-import colors from '../config/colors';
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',

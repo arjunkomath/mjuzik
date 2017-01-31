@@ -5,7 +5,7 @@ export default {
     main_bg: '#DFDFDF',
     title: '#8D0801',
     subtitle: '#343434',
-    border: '#8D0801',
+    border: '#3e3e3e',
     player: {
         bg: '#D1D1D1',
         text: '#8D0801'

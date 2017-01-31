@@ -16,6 +16,8 @@ import MiniPlayer from './components/player';
 import Spinner from 'react-native-spinkit';
 import colors from './config/colors';
 
+import PlayerState from './stores/player';
+
 @observer
 export default class tracks extends Component {
 
@@ -52,7 +54,7 @@ export default class tracks extends Component {
                 </View>
             ) : (
                 <View style={styles.container}>
-                    <ScrollView style={styles.container}>
+                    <ScrollView showsHorizontalScrollIndicator={false} style={[styles.container,{marginBottom: PlayerState.isPlaying ? 80 : 0 }]}>
                         <Image
                             style={styles.artwork}
                             source={{uri: state.params.artwork}}
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
     title: {
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
         margin: 10,

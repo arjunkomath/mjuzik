@@ -14,6 +14,7 @@ import Collection from './components/collection';
 import MiniPlayer from './components/player';
 import Spinner from 'react-native-spinkit';
 import colors from './config/colors';
+import PlayerState from './stores/player';
 
 @observer
 export default class home extends Component {
@@ -50,7 +51,7 @@ export default class home extends Component {
 
         return (
             <View style={styles.container}>
-                <View style={styles.collections}>
+                <View style={[styles.collections, {marginBottom: PlayerState.isPlaying ? 80 : 0 }]}>
                     {list}
                     {/*<Image source={require('../assets/images/sc.png')} />*/}
                 </View>

@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     title: {
-        marginLeft: 5,
-        marginTop: -20,
+        marginLeft: 10,
+        marginTop: -22,
         fontSize: 14,
         backgroundColor: 'transparent',
         color: colors.main_bg

@@ -1,6 +1,9 @@
 /**
  * Created by arjun on 26/01/17.
  */
+import {
+    Platform
+} from 'react-native';
 import {autorun, observable} from "mobx";
 import axios from "axios";
 import constants from "../config/constants";
@@ -17,7 +20,7 @@ class TracksStore {
             url: constants.api_base_url + '/tracks/',
             headers: {
                 'Accept': 'application/json; version=' + constants.version,
-                'Client': constants.client_ids.ios
+                'Client': constants.client_ids[Platform.OS]
             },
             params: {
                 mixtape: mixtapeId

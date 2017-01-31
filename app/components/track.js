@@ -16,8 +16,9 @@ import moment from 'moment';
 
 export default class track extends Component {
 
-    _play = (url, title) => {
+    _play = (url, title, id) => {
         PlayerState.play(url, title);
+        PlayerState.logPlayback(id);
     }
 
     render() {
@@ -26,12 +27,12 @@ export default class track extends Component {
 
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => this._play(track.stream_url, track.title)}>
+                <TouchableOpacity onPress={() => this._play(track.stream_url, track.title, track.id)}>
                     <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
                         <Image style={styles.artwork} source={{uri: track.artwork_url}}/>
                         <View style={{flex: 1}}>
                             <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">{track.title}</Text>
-                            <Text style={styles.artist} numberOfLines={1} ellipsizeMode="tail">{moment.utc(track.duration).format('mm:ss')} - {track.artist}</Text>
+                            <Text style={styles.artist} numberOfLines={1} ellipsizeMode="tail">{moment.utc(track.duration).format('mm:ss')} - {track.artist} - {track.play_count} play(s)</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         borderBottomColor: colors.border
     },
     title: {
-        fontSize: 14,
+        fontSize: 16,
         color: colors.title
     },
     artist: {

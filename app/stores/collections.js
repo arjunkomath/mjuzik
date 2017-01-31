@@ -2,7 +2,8 @@
  * Created by arjun on 26/01/17.
  */
 import {
-    ListView
+    ListView,
+    Platform
 } from 'react-native';
 import {autorun, observable, computed} from "mobx";
 import axios from "axios";
@@ -26,7 +27,7 @@ class CollectionStore {
             url: constants.api_base_url + '/collections/',
             headers: {
                 'Accept': 'application/json; version=' + constants.version,
-                'Client': constants.client_ids.ios
+                'Client': constants.client_ids[Platform.OS]
             }
         }).then(res => {
             this.collections = res.data.results;
@@ -42,7 +43,7 @@ class CollectionStore {
             url: constants.api_base_url + '/mixtapes/',
             headers: {
                 'Accept': 'application/json; version=' + constants.version,
-                'Client': constants.client_ids.ios
+                'Client': constants.client_ids[Platform.OS]
             },
             params: {
                 collection: collectionId
