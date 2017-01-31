@@ -14,6 +14,7 @@ import TracksStore from './stores/tracks';
 import Track from './components/track';
 import MiniPlayer from './components/player';
 import Spinner from 'react-native-spinkit';
+import colors from './config/colors';
 
 @observer
 export default class tracks extends Component {
@@ -35,33 +36,40 @@ export default class tracks extends Component {
         const {tracks, isLoading} = TracksStore;
 
         const track_view = isLoading ? (
-                <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-                    <Spinner isVisible={true} size={30} type="Wave" color="#748CAB"/>
-                </View>
-            ) : (
-                <ScrollView style={styles.container}>
-                    {tracks.map(track => {
-                        return (<Track key={track.id} track={track}/>)
-                    })}
-                </ScrollView>
-            );
-
-        return (
-            <View style={styles.container}>
-                <Image
-                    style={styles.artwork}
-                    source={{uri: state.params.artwork}}
-                >
+                <View style={styles.container}>
                     <Image
                         style={styles.artwork}
-                        source={require('../assets/images/row_bag.png')}
+                        source={{uri: state.params.artwork}}
                     >
+                        <Image
+                            style={styles.artwork}
+                            source={require('../assets/images/row_bag.png')}/>
                     </Image>
-                </Image>
-                {track_view}
-                <MiniPlayer/>
-            </View>
-        );
+                    <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                        <Spinner isVisible={true} size={30} type="Wave" color={colors.border}/>
+                    </View>
+                    <MiniPlayer/>
+                </View>
+            ) : (
+                <View style={styles.container}>
+                    <ScrollView style={styles.container}>
+                        <Image
+                            style={styles.artwork}
+                            source={{uri: state.params.artwork}}
+                        >
+                            <Image
+                                style={styles.artwork}
+                                source={require('../assets/images/row_bag.png')}/>
+                        </Image>
+                        {tracks.map(track => {
+                            return (<Track key={track.id} track={track}/>)
+                        })}
+                    </ScrollView>
+                    <MiniPlayer/>
+                </View>
+            );
+
+        return track_view;
     }
 
     componentWillUnmount() {
@@ -71,7 +79,6 @@ export default class tracks extends Component {
 }
 
 var {height, width} = Dimensions.get('window');
-import colors from './config/colors';
 const styles = StyleSheet.create({
     container: {
         flex: 1,

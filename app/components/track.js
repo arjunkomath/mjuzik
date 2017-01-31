@@ -41,23 +41,23 @@ export default class track extends Component {
 
 }
 
-import color from '../config/colors';
+import colors from '../config/colors';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        padding: 10,
         backgroundColor: 'transparent',
         borderBottomWidth: 1,
-        borderBottomColor: color.title
+        borderBottomColor: colors.border
     },
     title: {
         fontSize: 14,
-        color: color.title
+        color: colors.title
     },
     artist: {
         fontSize: 12,
         marginTop: 5,
-        color: color.subtitle
+        color: colors.subtitle
     },
     artwork: {
         marginRight: 10,

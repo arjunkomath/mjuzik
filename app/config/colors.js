@@ -3,10 +3,11 @@
  */
 export default {
     main_bg: '#DFDFDF',
-    title: '#2F3061',
+    title: '#8D0801',
     subtitle: '#343434',
+    border: '#8D0801',
     player: {
-        bg: '#2F3061',
-        text: '#DFDFDF'
+        bg: '#D1D1D1',
+        text: '#8D0801'
     }
 }

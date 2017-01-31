@@ -98,6 +98,7 @@ export default class player extends Component {
 
 }
 var {height, width} = Dimensions.get('window');
+import colors from '../config/colors';
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
@@ -105,15 +106,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         left: 0,
         bottom: 0,
-        height: 80,
+        height: 85,
         width: width,
         padding: 10,
-        backgroundColor: '#1D2D44',
+        backgroundColor: colors.player.bg,
         justifyContent: 'center',
         alignItems: 'center'
     },
     text: {
-        color: '#748CAB'
+        color: colors.player.text
     },
     playback: {
         flex: 1,
@@ -141,14 +142,13 @@ var sliderStyles = StyleSheet.create({
     },
     track: {
         height: 2,
-        backgroundColor: '#3E5C76',
+        backgroundColor: colors.border,
     },
     thumb: {
         width: 12,
         height: 12,
-        backgroundColor: '#748CAB',
+        backgroundColor: colors.player.text,
         borderRadius: 12 / 2,
-        backgroundColor: '#748CAB',
         shadowOffset: {width: 0, height: 0},
         marginTop: 1,
         shadowRadius: 2,

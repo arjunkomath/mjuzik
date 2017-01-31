@@ -13,6 +13,7 @@ import CollectionStore from './stores/collections';
 import Collection from './components/collection';
 import MiniPlayer from './components/player';
 import Spinner from 'react-native-spinkit';
+import colors from './config/colors';
 
 @observer
 export default class home extends Component {
@@ -37,7 +38,7 @@ export default class home extends Component {
 
         const list = isLoading ? (
             <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-                <Spinner isVisible={true} size={30} type="Wave" color="#748CAB"/>
+                <Spinner isVisible={true} size={30} type="Wave" color={colors.border}/>
             </View>
         ) : (
             <ListView
@@ -59,7 +60,6 @@ export default class home extends Component {
     }
 }
 
-import colors from './config/colors';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     collectionTitle: {
-        fontSize: 20,
+        fontSize: 25,
         color: colors.title
     }
 });

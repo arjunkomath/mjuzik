@@ -24,8 +24,11 @@ export default class mixtape extends Component {
                     onPress={() => {navigate('Tracks', { id: details.id, title: details.title, artwork: details.artwork_url })}}>
                     <Image
                         style={styles.artwork}
-                        source={{uri: details.artwork_url}}
-                    />
+                        source={{uri: details.artwork_url}}>
+                        <Image
+                            style={styles.artwork}
+                            source={require('../../assets/images/row_bag.png')} />
+                    </Image>
                 </TouchableOpacity>
                 <Text style={styles.title}>{details.title}</Text>
             </View>
@@ -41,12 +44,14 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginRight: 10,
         flex: 1,
-        backgroundColor: 'transparent'
+        backgroundColor: 'white'
     },
     title: {
-        marginTop: 5,
+        marginLeft: 5,
+        marginTop: -20,
         fontSize: 14,
-        color: colors.subtitle
+        backgroundColor: 'transparent',
+        color: colors.main_bg
     },
     artwork: {
         width: 150,
