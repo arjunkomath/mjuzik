@@ -2,22 +2,15 @@
  * Created by arjun on 26/01/17.
  */
 import {
-    ListView,
     Platform
 } from 'react-native';
-import {autorun, observable, computed} from "mobx";
+import { observable} from "mobx";
 import axios from "axios";
 import constants from "../config/constants";
 
 class CollectionStore {
     @observable collections = []
     @observable isLoading = false;
-
-    ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
-    @computed get dataSource() {
-        return this.ds.cloneWithRows(this.collections.slice());
-    }
 
     getCollections() {
         this.isLoading = true;
