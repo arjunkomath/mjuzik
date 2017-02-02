@@ -54,7 +54,7 @@ export default class tracks extends Component {
                 </View>
             ) : (
                 <View style={styles.container}>
-                    <ScrollView showsHorizontalScrollIndicator={false} style={[styles.container,{marginBottom: PlayerState.isPlaying ? 80 : 0 }]}>
+                    <ScrollView showsVerticalScrollIndicator={false} style={[styles.container,{marginBottom: PlayerState.isPlaying ? 80 : 0 }]}>
                         <Image
                             style={styles.artwork}
                             source={{uri: state.params.artwork}}

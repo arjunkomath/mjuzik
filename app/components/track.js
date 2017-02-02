@@ -33,6 +33,7 @@ export default class track extends Component {
                         <View style={{flex: 1}}>
                             <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">{track.title}</Text>
                             <Text style={styles.artist} numberOfLines={1} ellipsizeMode="tail">{moment.utc(track.duration).format('mm:ss')} - {track.artist} - {track.play_count} play(s)</Text>
+                            <View style={styles.line}></View>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -48,22 +49,26 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
         backgroundColor: 'transparent',
+    },
+    line: {
+        paddingTop: 14,
         borderBottomWidth: 1,
-        borderBottomColor: colors.border
+        borderBottomColor: colors.borderLight
     },
     title: {
-        fontSize: 16,
+        fontSize: 14,
+        fontWeight: 'bold',
         color: colors.title
     },
     artist: {
         fontSize: 12,
-        marginTop: 5,
+        marginTop: 2,
         color: colors.subtitle
     },
     artwork: {
         marginRight: 10,
-        width: 50,
-        height: 50
+        width: 55,
+        height: 55
     }
 });
 

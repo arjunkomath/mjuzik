@@ -32,6 +32,7 @@ export default class collection extends Component {
     render() {
         return (
             <ScrollView
+                showsHorizontalScrollIndicator={false}
                 horizontal={true} >
                 {this.state.mixtapes.map( mixtape => {
                     return (<Mixtape key={mixtape.id} details={mixtape} {...this.props} />)
