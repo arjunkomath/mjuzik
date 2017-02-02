@@ -19,6 +19,7 @@ import moment from 'moment';
 import Slider from 'react-native-slider';
 import colors from '../config/colors';
 import Swipeout from 'react-native-swipeout';
+import * as Animatable from 'react-native-animatable';
 
 var MediaStates = {
     LOADING: -3,
@@ -52,12 +53,12 @@ export default class player extends Component {
 
         if (playerState == MediaStates.LOADING || playerState == MediaStates.PREPARING) {
             return (
-                <View style={styles.container}>
+                <Animatable.View animation="slideInUp" style={styles.container}>
                     <View style={styles.playback}>
                         <Text numberOfLines={1} style={styles.text}>{title}</Text>
                     </View>
                     <Spinner style={styles.spinner} isVisible={true} size={30} type="Wave" color={colors.border}/>
-                </View>
+                </Animatable.View>
             );
         }
 

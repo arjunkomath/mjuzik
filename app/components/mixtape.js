@@ -10,6 +10,7 @@ import {
     Text,
     TouchableOpacity
 } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 export default class mixtape extends Component {
 
@@ -19,7 +20,7 @@ export default class mixtape extends Component {
         const {navigate} = this.props.navigation;
 
         return (
-            <View style={styles.container}>
+            <Animatable.View animation="zoomIn" delay={this.props.delay || 0} style={styles.container}>
                 <TouchableOpacity
                     onPress={() => {navigate('Tracks', { id: details.id, title: details.title, artwork: details.artwork_url })}}>
                     <Image
@@ -31,7 +32,7 @@ export default class mixtape extends Component {
                     </Image>
                 </TouchableOpacity>
                 <Text style={styles.title}>{details.title}</Text>
-            </View>
+            </Animatable.View>
         );
     }
 

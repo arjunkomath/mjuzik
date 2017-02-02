@@ -75,7 +75,7 @@ export default class home extends Component {
                     return true;
                 return (
                     <View key={rowData.id} style={styles.collectionItem}>
-                        <Text style={styles.collectionTitle}>{rowData.title.toUpperCase()}</Text>
+                        <Text style={styles.collectionTitle}>{rowData.title.toLowerCase()}</Text>
                         <Collection id={rowData.id} {...this.props} />
                     </View>
                 )

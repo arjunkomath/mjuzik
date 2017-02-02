@@ -11,6 +11,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
+import * as Animatable from 'react-native-animatable';
 import PlayerState from '../stores/player';
 import moment from 'moment';
 
@@ -26,7 +27,7 @@ export default class track extends Component {
         const {track} = this.props;
 
         return (
-            <View style={styles.container}>
+            <Animatable.View animation="bounceIn" delay={this.props.delay || 0} style={styles.container}>
                 <TouchableOpacity onPress={() => this._play(track.stream_url, track.title, track.id)}>
                     <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
                         <Image style={styles.artwork} source={{uri: track.artwork_url}}/>
@@ -37,7 +38,7 @@ export default class track extends Component {
                         </View>
                     </View>
                 </TouchableOpacity>
-            </View>
+            </Animatable.View>
         );
     }
 

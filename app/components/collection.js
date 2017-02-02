@@ -34,8 +34,8 @@ export default class collection extends Component {
             <ScrollView
                 showsHorizontalScrollIndicator={false}
                 horizontal={true} >
-                {this.state.mixtapes.map( mixtape => {
-                    return (<Mixtape key={mixtape.id} details={mixtape} {...this.props} />)
+                {this.state.mixtapes.map( (mixtape, index) => {
+                    return (<Mixtape key={mixtape.id} delay={index * 75} details={mixtape} {...this.props} />)
                 })}
             </ScrollView>
         );

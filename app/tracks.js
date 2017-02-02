@@ -63,8 +63,8 @@ export default class tracks extends Component {
                                 style={styles.artwork}
                                 source={require('../assets/images/row_bag.png')}/>
                         </Image>
-                        {tracks.map(track => {
-                            return (<Track key={track.id} track={track}/>)
+                        {tracks.map( (track, index) => {
+                            return (<Track key={track.id} delay={index * 75} track={track}/>)
                         })}
                     </ScrollView>
                     <MiniPlayer/>
