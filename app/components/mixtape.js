@@ -20,7 +20,7 @@ export default class mixtape extends Component {
         const {navigate} = this.props.navigation;
 
         return (
-            <Animatable.View animation="zoomIn" delay={this.props.delay || 0} style={styles.container}>
+            <Animatable.View animation="bounceIn" delay={this.props.delay || 0} style={styles.container}>
                 <TouchableOpacity
                     onPress={() => {navigate('Tracks', { id: details.id, title: details.title, artwork: details.artwork_url })}}>
                     <Image
