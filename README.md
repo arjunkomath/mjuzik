@@ -5,8 +5,8 @@
 <a href="https://play.google.com/store/apps/details?id=com.mjuzik"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png" width="175" /></a>
 
 ## :rice_scene: Images
-![Image 1](http://i.imgur.com/3pzMCZF.jpg)
-
+![Android](http://i.imgur.com/3pzMCZF.jpg | width=100)
+![iPhone OS](http://i.imgur.com/XyQ5gQD.png | width=100)
 
 ## :blush: Contribute
 Feature Request, Bugs and Ideas can be added [here.](https://github.com/arjunkomath/mjuzik/issues)
