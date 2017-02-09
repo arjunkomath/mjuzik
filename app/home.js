@@ -88,6 +88,9 @@ export default class home extends Component {
                     <View style={styles.collections}>
                         {list}
                     </View>
+                    <View style={{flex: 1, padding: 10}}>
+                        <Image source={require('../assets/images/sc.png')}/>
+                    </View>
                 </ScrollView>
                 <MiniPlayer/>
             </View>
@@ -102,10 +105,10 @@ const styles = StyleSheet.create({
     },
     collections: {
         flex: 1,
-        marginTop: 20,
-        marginLeft: 10,
-        marginRight: 10,
-        marginBottom: 20
+        marginTop: 10,
+        // marginLeft: 10,
+        // marginRight: 10,
+        marginBottom: 10
     },
     collectionItem: {
         flex: 1,
@@ -113,6 +116,7 @@ const styles = StyleSheet.create({
     },
     collectionTitle: {
         fontSize: 25,
+        marginLeft: 10,
         color: colors.title
     }
 });
