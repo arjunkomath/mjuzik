@@ -58,7 +58,7 @@ export default class home extends Component {
                                 onPress={() => {navigate('Tracks', { id: details.id, title: details.title, artwork: details.artwork_url })}}>
                                 <Image
                                     style={{width: width, height: width}}
-                                    source={{uri: details.artwork_url}}>
+                                    source={require('../assets/images/collection.jpg')}>
                                 </Image>
                             </TouchableOpacity>
                         )

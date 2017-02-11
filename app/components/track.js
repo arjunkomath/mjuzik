@@ -30,7 +30,7 @@ export default class track extends Component {
             <Animatable.View animation="bounceIn" delay={this.props.delay || 0} style={styles.container}>
                 <TouchableOpacity onPress={() => this._play(track.stream_url, track.title, track.id)}>
                     <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
-                        <Image style={styles.artwork} source={{uri: track.artwork_url}}/>
+                        <Image style={styles.artwork} source={require('../../assets/images/collection.jpg')}/>
                         <View style={{flex: 1}}>
                             <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">{track.title}</Text>
                             <Text style={styles.artist} numberOfLines={1} ellipsizeMode="tail">{moment.utc(track.duration).format('mm:ss')} - {track.artist} - {track.play_count} play(s)</Text>

@@ -25,7 +25,7 @@ export default class mixtape extends Component {
                     onPress={() => {navigate('Tracks', { id: details.id, title: details.title, artwork: details.artwork_url })}}>
                     <Image
                         style={styles.artwork}
-                        source={{uri: details.artwork_url}}>
+                        source={require('../../assets/images/collection.jpg')}>
                         <Image
                             style={styles.artwork}
                             source={require('../../assets/images/row_bag.png')} />

@@ -13,6 +13,7 @@ import {
 import Home from './app/home';
 import Label from './app/stores/label';
 import { StackNavigator } from 'react-navigation';
+import codePush from "react-native-code-push";
 
 export default class HomeScreen extends Component {
 
@@ -35,4 +36,4 @@ const mjuzik = StackNavigator({
     Tracks: {screen: Tracks }
 });
 
-AppRegistry.registerComponent('mjuzik', () => mjuzik);
+AppRegistry.registerComponent('mjuzik', () => codePush(mjuzik));

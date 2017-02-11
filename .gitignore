@@ -54,3 +54,6 @@ fastlane/screenshots
 
 app/config/constants.js
 android/app/techulus.jks
+
+android/app/src/main/res/values/strings.xml
+ios/mjuzik/Info.plist
