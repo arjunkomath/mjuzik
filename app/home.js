@@ -19,6 +19,7 @@ import Spinner from 'react-native-spinkit';
 import colors from './config/colors';
 import PlayerState from './stores/player';
 import {Carousel} from 'nachos-ui'
+import appPackage from '../package.json';
 
 var {height, width} = Dimensions.get('window');
 
@@ -58,7 +59,7 @@ export default class home extends Component {
                                 onPress={() => {navigate('Tracks', { id: details.id, title: details.title, artwork: details.artwork_url })}}>
                                 <Image
                                     style={{width: width, height: width}}
-                                    source={require('../assets/images/collection.jpg')}>
+                                    source={{uri: details.artwork_url}}>
                                 </Image>
                             </TouchableOpacity>
                         )
@@ -89,6 +90,7 @@ export default class home extends Component {
                         {list}
                     </View>
                     <View style={{flex: 1, padding: 10}}>
+                        <Text style={styles.version}>mjuzik v{appPackage.version}</Text>
                         <Image source={require('../assets/images/sc.png')}/>
                     </View>
                 </ScrollView>
@@ -118,5 +120,9 @@ const styles = StyleSheet.create({
         fontSize: 25,
         marginLeft: 10,
         color: colors.title
+    },
+    version: {
+        fontSize: 13,
+        fontWeight: 'bold'
     }
 });
