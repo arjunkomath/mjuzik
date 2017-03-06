@@ -12,6 +12,9 @@ import {
 import CollectionStore from '../stores/collections';
 import Mixtape from './mixtape';
 
+/**
+ * Renders a collection consisting of mixtape
+ */
 export default class collection extends Component {
 
     constructor(props) {

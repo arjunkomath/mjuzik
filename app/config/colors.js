@@ -1,5 +1,5 @@
 /**
- * Created by arjun on 26/01/17.
+ * Configure app theme
  */
 export default {
     main_bg: '#DFDFDF',

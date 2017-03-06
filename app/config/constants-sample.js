@@ -1,4 +1,6 @@
 /**
+ * Store app config constants
+ *
  * Rename this file to constants.js
  * Replace the dummy values with your actual values
  */
