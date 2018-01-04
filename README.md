@@ -1,12 +1,4 @@
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/9yRPuFL2U1TEayieStESoFC8/arjunkomath/mjuzik'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/9yRPuFL2U1TEayieStESoFC8/arjunkomath/mjuzik.svg' />
-</a>
 
-![mjuzik](http://i.imgur.com/3BP40gx.jpg)
-## Open Source Curated Music app build on React Native
-
-## :cloud: Download
-<a href="https://play.google.com/store/apps/details?id=com.mjuzik"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge.png" width="175" /></a>
 
 ## :rice_scene: Images
 <img src="http://i.imgur.com/p2AT3do.jpg" data-canonical-src="http://i.imgur.com/p2AT3do.png" width="300" />
